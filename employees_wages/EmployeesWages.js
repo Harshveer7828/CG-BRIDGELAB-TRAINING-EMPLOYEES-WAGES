@@ -32,10 +32,10 @@ const WAGE_PER_HOUR = 20;
 
 // UC3 to get working hours
 function getWorkingHours(empCheck) {
-    switch(empCheck){
+    switch (empCheck) {
         case IS_PART_TIME: empHrs = PART_TIME_HOURS;
         case IS_FULL_TIME: empHrs = FULL_TIME_HOURS;
-        default : empHrs = 0;
+        default: empHrs = 0;
     }
 }
 
@@ -66,7 +66,7 @@ NUM_OF_WORKING_DAYS = 10;
 let totalEmplHrs = 0;
 let totalWorkingDays = 0;
 
-while(totalEmplHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS){
+while (totalEmplHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS) {
     totalEmplHrs++;
     let empCheck = Math.floor(Math.random() * 10) % 3;
 
@@ -74,6 +74,36 @@ while(totalEmplHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS
 }
 
 empWage = empHrs * WAGE_PER_HOUR;
-console.log("UC5 - Total Days: " + totalWorkingDays + " Total Hrs: " + totalEmplHrs);1
+console.log("UC5 - Total Days: " + totalWorkingDays + " Total Hrs: " + totalEmplHrs); 1
 
 
+// UC6 Storing daily wages in an array
+
+
+function calcDailyWage(empHrs) { 
+    return empHrs * WAGE_PER_HOUR; 
+}
+
+MAX_HRS_IN_MONTH = 160;
+
+NUM_OF_WORKING_DAYS = 20;
+
+totalEmplHrs = 0;
+
+totalWorkingDays = 0;
+
+let empDailyWageArr = new Array();
+
+while (totalEmplHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS) {
+
+    totalWorkingDays++;
+
+    let empCheck = Math.floor(Math.random() * 10) % 3; let empHrs = getWorkingHours(empCheck); totalEmplHrs += empHrs;
+
+    empDailyWageArr.push(calcDailyWage(empHrs));
+
+}
+
+let empwage = calcDailyWage(totalEmplHrs);
+
+console.log("UC6 Total Days: " + totalWorkingDays + "Total Hrs: " + totalEmplHrs + "Emp Wage: " + empwage)
