@@ -173,3 +173,38 @@ function totalDaysWorked(numOfDays, dailywage) {
 }
 
 console.log("UC 76 Number of Days Emp Worked: " + empDailyWageArr.reduce(totalDaysWorked, 0));
+
+
+// UC 8 -> Store day and daily wage along with total wage
+
+MAX_HRS_IN_MONTH = 160;
+
+NUM_OF_WORKING_DAYS = 20;
+
+totalEmplHrs = 0;
+
+totalWorkingDays = 0;
+empDailyWageArr = new Array();
+let empDailyWageMap = new Map();
+
+function calcDailyWage(empHrs) {
+    return empHrs * WAGE_PER_HOUR;
+}
+
+while (totalEmplHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS) { 
+    totalWorkingDays++;
+    let empCheck = Math.floor(Math.random() * 10) % 3; 
+    let empHrs = getworkingHours(empCheck);
+    totalEmplHrs += empHrs; 
+    empDailyWageArr.push(calcDailyWage(empHrs)); 
+    empDailyWageMap.set(totalWorkingDays, calcDailyWage(empHrs));
+
+}
+
+I
+
+console.log(empDailyWageMap);
+
+function totalWages(totalWage, dailywage) { return totalWage + dailywage; }
+
+console.log("UC7A Emp Wage Map totalHrs: " + Array.from(empDailyWageMap.values()).reduce(totalWages, 0));
