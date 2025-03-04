@@ -225,15 +225,55 @@ console.log("UC9 - Employee wage with arrow function :" + "Total Hours: " + tota
 let nonWorkingDays = new Array();
 let partWorkingDays = new Array();
 let fullWorkingDays = new Array();
-empDailyWageMap.forEach((value,key,map) => {
-    if(value == 8) fullWorkingDays.push(key);
-    else if(value == 4) partWorkingDays.push(key);
+empDailyWageMap.forEach((value, key, map) => {
+    if (value == 8) fullWorkingDays.push(key);
+    else if (value == 4) partWorkingDays.push(key);
     else nonWorkingDays.push(key);
 });
 
 console.log("Full working days: " + fullWorkingDays);
 console.log("Partworking days: " + partWorkingDays);
 console.log("Non working days: " + nonWorkingDays);
+
+
+// UC 10 Object Creation 
+
+let totalEmpHrs = 0;
+
+totalWorkingDays = 0;
+
+let empDailyHrsAndWageArr = new Array();
+
+while (totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS) {
+
+    totalWorkingDays++;
+
+    let empCheck = Math.floor(Math.random() * 10) % 3;
+
+    let empHrs = getWorkingHours(empCheck);
+
+    totalEmpHrs += empHrs;
+
+    empDailyHrsAndWageArr.push(
+
+        {
+
+            dayNum: totalWorkingDays,
+            dailyHours: empHrs,
+            dailywage: calcDailyWage(empHrs),
+
+            toString() {
+
+                return '\nDay' + this.dayNum + "=> Working Hours is " + this.dailyHours +
+
+                    " And Wage Earned + this.dailywage"
+            },
+
+        });
+}
+
+
+console.log("UC 10 Showing Daily Hours Worked and Wage Earned: " + empDailyHrsAndWageArr);
 
 
 
